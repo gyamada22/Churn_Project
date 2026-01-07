@@ -23,8 +23,8 @@ e Analytics.
   - Uso de **Pandas** e **SQLAlchemy** para persistência eficiente  
 
 - **Armazenamento & Camadas de Dados:**  
-  - **PostgreSQL / Snowflake** como base central  
-  - Arquitetura em camadas (**Bronze, Silver e Gold**)  
+  - **PostgreSQL:** Utilizado para armazenamento de metadados do Airflow e suporte local.
+  - **Snowflake:** Data Warehouse principal para as camadas analíticas (Bronze, Silver, Gold).
 
 - **Transformação & Modelagem:**  
   - **dbt** para transformações SQL versionadas  
