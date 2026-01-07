@@ -62,6 +62,12 @@ e Analytics.
 
 ---
 
+## 📊 Dashboard de Churn
+
+![Dashboard de Churn Bancário](images/Churn_Dash.png)
+
+---
+
 ## 📊 Insights Estratégicos
 
 - **Alta Renda em Risco**  
