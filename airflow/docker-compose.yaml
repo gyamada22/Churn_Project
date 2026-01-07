@@ -1,0 +1,23 @@
+services:
+  airflow:
+    image: apache/airflow:2.7.1
+    environment:
+      - AIRFLOW__CORE__LOAD_EXAMPLES=False
+      - AIRFLOW__DATABASE__SQL_ALCHEMY_CONN=postgresql+psycopg2://airflow:airflow@postgres/airflow
+      - AIRFLOW__CORE__EXECUTOR=SequentialExecutor
+      - _PIP_ADDITIONAL_REQUIREMENTS=snowflake-connector-python[pandas] pandas pyarrow<10.1.0 kagglehub dbt-snowflake
+    volumes:
+      - ./dags:/opt/airflow/dags
+      - ../dbt_churn:/opt/airflow/dbt_churn
+    ports:
+      - "8080:8080"
+    command: standalone
+    depends_on:
+      - postgres
+
+  postgres:
+    image: postgres:13
+    environment:
+      - POSTGRES_USER=airflow
+      - POSTGRES_PASSWORD=airflow
+      - POSTGRES_DB=airflow

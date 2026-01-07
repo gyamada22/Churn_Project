@@ -1,0 +1,8 @@
+version: 2
+
+sources:
+  - name: bronze
+    database: FINANCE_DB
+    schema: BRONZE
+    tables:
+      - name: RAW_BANK_CHURN
