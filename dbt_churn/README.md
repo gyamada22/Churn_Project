@@ -170,3 +170,29 @@ Consultar os dados nas camadas Silver e Gold
 
 Abrir o arquivo .pbix no Power BI para visualizar os dashboards
 ```
+
+## 🚀 Como Executar o Projeto
+
+### Pré-requisitos
+- Docker e Docker Compose instalados
+- Power BI Desktop (para visualização do dashboard)
+
+### Passo a Passo
+
+1. Subir o ambiente local (Airflow, banco e dependências):
+   ```bash
+   docker-compose up -d
+   ```
+2. Acessar a interface do Airflow:
+
+http://localhost:8080
+> Credenciais padrão configuradas no docker-compose.yml
+
+3. Ativar a DAG:
+pipeline_churn_bancario_end_to_end
+
+4. Aguardar a execução completa do pipeline.
+
+5. Consultar os dados transformados nas camadas Silver e Gold.
+
+6. Abrir o arquivo .pbix no Power BI para visualizar os dashboards.
