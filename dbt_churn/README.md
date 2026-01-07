@@ -184,9 +184,10 @@ Abrir o arquivo .pbix no Power BI para visualizar os dashboards
    docker-compose up -d
    ```
 2. Acessar a interface do Airflow:
-
-http://localhost:8080
-> Credenciais padrão configuradas no docker-compose.yml
+   ```bash
+    http://localhost:8080
+    ```
+    > Credenciais padrão configuradas no docker-compose.yml
 
 3. Ativar a DAG:
 pipeline_churn_bancario_end_to_end
