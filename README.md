@@ -1,5 +1,5 @@
 # ☁️ Cloud Data Engineering — End-to-End ETL Pipeline
-**Python • Apache Airflow • dbt • Snowflake • PostgreSQL • Docker • Power BI**
+**Python • Apache Airflow • dbt • Snowflake • PostgreSQL • Docker • Power BI • Git**
 
 Este repositório apresenta a construção de um **pipeline de dados end-to-end em ambiente cloud**, cobrindo **ingestão, orquestração, transformação, modelagem analítica e qualidade de dados**, seguindo boas práticas modernas de **Data Engineering e Analytics Engineering**.
 
