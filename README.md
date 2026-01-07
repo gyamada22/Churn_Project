@@ -1,6 +1,6 @@
 # 🏦 Churn Bancário — Pipeline de Dados & Insights Estratégicos
 
-## 🎯 Contexto do Problema
+##  Contexto do Problema
 Este projeto analisa dados de clientes bancários com o objetivo de identificar
 os principais fatores que influenciam o **churn** e apoiar **decisões estratégicas
 de retenção**, utilizando um pipeline de dados completo e automatizado.
@@ -62,7 +62,7 @@ e Analytics.
 
 ---
 
-## 📊 Dashboard de Churn
+##  Dashboard de Churn
 
 ![Dashboard de Churn Bancário](images/Churn_Dash.png)
 
@@ -92,9 +92,39 @@ e Analytics.
 
 ---
 
-## 💼 Impacto para o Negócio
+##  Impacto para o Negócio
 Os resultados permitem:
 - Priorizar a retenção de clientes de **alta renda**
 - Reduzir churn nos **primeiros meses de relacionamento**
 - Aumentar a fidelização por meio de **cross-sell**
 - Apoiar decisões estratégicas com base em dados confiáveis e automatizados
+
+---
+
+##  Como Executar o Projeto
+
+### Pré-requisitos
+- Docker e Docker Compose instalados
+- Power BI Desktop (para visualização do dashboard)
+
+### Passo a Passo
+
+1. Subir o ambiente local (Airflow, banco e dependências):
+   ```bash
+   docker-compose up -d
+   ```
+2. Acessar a interface do Airflow:
+   ```bash
+    http://localhost:8080
+    ```
+    > Credenciais padrão configuradas no docker-compose.yml
+
+3. Ativar a DAG:
+pipeline_churn_bancario_end_to_end
+
+4. Aguardar a execução completa do pipeline.
+
+5. Consultar os dados transformados nas camadas Silver e Gold.
+
+6. Abrir o arquivo .pbix no Power BI para visualizar os dashboards.
+
