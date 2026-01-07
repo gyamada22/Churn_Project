@@ -1,172 +1,94 @@
-# ☁️ Cloud Data Engineering — End-to-End ETL Pipeline
-**Python • Apache Airflow • dbt • Snowflake • PostgreSQL • Docker • Power BI • Git**
+# 🏦 Churn Bancário — Pipeline de Dados & Insights Estratégicos
 
-Este repositório apresenta a construção de um **pipeline de dados end-to-end em ambiente cloud**, cobrindo **ingestão, orquestração, transformação, modelagem analítica e qualidade de dados**, seguindo boas práticas modernas de **Data Engineering e Analytics Engineering**.
+## 🎯 Contexto do Problema
+Este projeto analisa dados de clientes bancários com o objetivo de identificar
+os principais fatores que influenciam o **churn** e apoiar **decisões estratégicas
+de retenção**, utilizando um pipeline de dados completo e automatizado.
 
-O projeto foi desenhado para simular um **cenário real de produção**, indo além de soluções totalmente gerenciadas, com foco em **infraestrutura, automação, versionamento e observabilidade**.
-
----
-
-## 🎯 Objetivos do Projeto
-
-- Construir um pipeline **completo**, desde dados brutos até camadas analíticas.
-- Trabalhar com **dados externos** (API pública e dataset real).
-- Implementar **orquestração automatizada** com dependências, retries e logs.
-- Aplicar **Medallion Architecture (Bronze, Silver, Gold)** usando dbt.
-- Garantir **qualidade de dados** via testes automatizados.
-- Simular um ambiente próximo ao **dia a dia de um Data Engineer em cloud**.
+O foco não é apenas o dashboard final, mas todo o processo de **engenharia,
+transformação e análise de dados**, simulando um cenário real de Data Engineering
+e Analytics.
 
 ---
 
-## 🧱 Stack Tecnológica
+## ⚙️ Stack & Fluxo de Dados
 
-### ☁️ Infraestrutura & DevOps
-- **Cloud Provider:** DigitalOcean
-- **Ambiente:** Linux VM (Droplet)
-- **Containerização:** Docker & Docker Compose
-- **CI:** GitHub Actions
+**Stack:** Python • SQL • dbt • Apache Airflow • PostgreSQL / Snowflake • Power BI • Docker
 
-> Escolha proposital para aprender conceitos reais de infraestrutura, deploy e isolamento de ambientes.
+- **Fonte de Dados:**  
+  Dataset público de Churn Bancário (Kaggle), representando dados operacionais de clientes financeiros.
 
----
+- **Ingestão de Dados:**  
+  - **Python** para extração, padronização técnica e carga dos dados brutos  
+  - Uso de **Pandas** e **SQLAlchemy** para persistência eficiente  
 
-### 🗄️ Camada de Dados
-- **PostgreSQL**
-- **Snowflake** (Data Warehouse Analítico)
+- **Armazenamento & Camadas de Dados:**  
+  - **PostgreSQL / Snowflake** como base central  
+  - Arquitetura em camadas (**Bronze, Silver e Gold**)  
 
-Utilização:
-- **Bronze:** dados brutos ingeridos
-- **Silver:** dados tratados e padronizados
-- **Gold:** dados modelados para analytics e BI
+- **Transformação & Modelagem:**  
+  - **dbt** para transformações SQL versionadas  
+  - Regras de negócio, tipagem, deduplicação e métricas analíticas  
+  - Testes automatizados de qualidade de dados  
 
----
+- **Orquestração:**  
+  - **Apache Airflow** para execução end-to-end do pipeline  
+  - Controle de dependências, retries, logs e agendamento  
 
-### 🔌 Ingestão de Dados
-- **Python**
-  - `requests`
-  - `pandas`
-  - `SQLAlchemy`
+- **Visualização & Analytics:**  
+  - **Power BI** conectado à camada **Gold**  
+  - Dashboards focados em churn, retenção e comportamento do cliente  
 
-**Responsabilidades:**
-- Extração de dados (API pública / CSV real)
-- Padronização técnica mínima de schema
-- Persistência **sem regras de negócio** na camada Bronze
+- **Infraestrutura & DataOps:**  
+  - **Docker & Docker Compose** para padronização do ambiente  
+  - **Git & GitHub** para versionamento do código e do pipeline  
 
 ---
 
-### 🔄 Orquestração
-- **Apache Airflow**
-
-**Funcionalidades implementadas:**
-- DAGs end-to-end
-- Controle de dependências
-- Retries automáticos
-- Scheduling e backfill
-- Logs, Grid View e Gantt View para observabilidade
+## ❓ Perguntas de Negócio Respondidas
+- Quais perfis de clientes apresentam maior risco de churn?
+- O uso de múltiplos produtos reduz a evasão?
+- Qual é o impacto financeiro do churn?
+- Em que momento do relacionamento o cliente tende a sair?
 
 ---
 
-### 🧪 Transformação & Modelagem
-- **dbt Core**
-
-**Boas práticas aplicadas:**
-- SQL versionado
-- Modelagem incremental
-- Medallion Architecture
-- Separação entre lógica técnica e de negócio
-
-**Camadas:**
-- **Bronze:** espelhamento do raw
-- **Silver:** limpeza, tipagem, deduplicação
-- **Gold:** métricas e tabelas analíticas
-
-**Qualidade de Dados:**
-- `not_null`
-- `unique`
-- testes customizados via dbt
+## 📌 KPIs-Chave
+- **Taxa de Churn (%)**
+- **Saldo Perdido (€)**
+- **Clientes Ativos vs Inativos**
+- **Churn por Quantidade de Produtos**
+- **Churn por Tempo de Relacionamento (Tenure)**
 
 ---
 
-### 📊 Consumo Analítico
-- **Power BI**
+## 📊 Insights Estratégicos
 
-**KPIs e Análises:**
-- Taxa de Churn (%)
-- Segmentação geográfica
-- Comportamento do cliente
-- Uso de produtos e impacto na retenção
+- **Alta Renda em Risco**  
+  **Insight:** Clientes com saldo entre **100k–150k** concentram a maior parte do **saldo perdido (€185,6 Mi)**.  
+  **Ação:** Criar programas de retenção dedicados para clientes de alto valor.
 
----
+- **Segundo Produto = Fidelização**  
+  **Insight:** Clientes com **2 produtos** apresentam a **menor taxa de churn (7,58%)**.  
+  **Ação:** Estratégia de cross-sell para levar rapidamente o cliente do 1º para o 2º produto.
 
-## 📅 Linha do Tempo do Projeto
+- **Churn Concentrado em 1 Produto**  
+  **Insight:** Clientes com apenas **1 produto** geram o maior volume absoluto de churn (**1.409 cancelamentos**).  
+  **Ação:** Incentivos e ofertas nos primeiros meses de relacionamento.
 
-### 🏗️ Fase 1 — Fundação e Infraestrutura
-- Configuração do `docker-compose.yaml`
-- Deploy do Apache Airflow
-- Criação dos schemas `BRONZE`, `SILVER`, `GOLD`
+- **Falha no Onboarding**  
+  **Insight:** O churn atinge cerca de **23% no primeiro ano** de relacionamento.  
+  **Ação:** Melhorar o onboarding e a entrega de valor nos primeiros 90 dias.
 
----
-
-### 📥 Fase 2 — Ingestão & Orquestração
-- Desenvolvimento do script Python de ingestão
-- Padronização técnica de colunas
-- Carga automática na camada Bronze
-- Criação da primeira DAG no Airflow
+- **Público Maduro em Risco**  
+  **Insight:** Clientes entre **50–59 anos** apresentam churn de **56,04%**.  
+  **Ação:** Desenvolver produtos de investimento, previdência e atendimento premium.
 
 ---
 
-### 🧠 Fase 3 — Analytics Engineering
-- Modelos dbt para Silver e Gold
-- Implementação de regras de negócio
-- Testes automatizados de qualidade
-- Orquestração do `dbt run` via Airflow
-
----
-
-### 📈 Fase 4 — Entrega de Valor
-- Conexão do Power BI à camada Gold
-- Construção de dashboards estratégicos
-- Geração de insights para retenção de clientes
-
----
-
-## 🏦 Caso de Uso: Churn Bancário
-
-Pipeline focado em **retenção de clientes bancários**, transformando dados operacionais em inteligência estratégica.
-
-**Principais análises:**
-- Taxa geral de churn
-- Churn por país (França, Alemanha, Espanha)
-- Relação entre produtos, atividade do cliente e churn
-
----
-
-## 🛠️ Skills Aplicadas
-
-| Skill | Categoria |
-|-----|---------|
-| Apache Airflow | Orquestração |
-| dbt (data build tool) | Transformação |
-| SQL (PostgreSQL / Snowflake) | Data Warehouse |
-| Python (ETL) | Engenharia de Dados |
-| Docker & Docker Compose | Infraestrutura |
-| Power BI | Visualização |
-| Git & GitHub Actions | Versionamento & CI |
-
----
-
-## 🚀 Como Executar o Projeto
-
-```bash
-# Subir o ambiente
-docker-compose up -d
-Acessar o Airflow em http://localhost:8080
-
-Ativar a DAG pipeline_churn_bancario_end_to_end
-
-Aguardar a execução completa
-
-Consultar os dados nas camadas Silver e Gold
-
-Abrir o arquivo .pbix no Power BI para visualizar os dashboards
-```
+## 💼 Impacto para o Negócio
+Os resultados permitem:
+- Priorizar a retenção de clientes de **alta renda**
+- Reduzir churn nos **primeiros meses de relacionamento**
+- Aumentar a fidelização por meio de **cross-sell**
+- Apoiar decisões estratégicas com base em dados confiáveis e automatizados
