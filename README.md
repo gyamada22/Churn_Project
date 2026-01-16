@@ -11,7 +11,7 @@ e Analytics.
 
 ---
 
-## ⚙️ Stack & Fluxo de Dados
+##  Stack & Fluxo de Dados
 
  **Stack:** Python • SQL • dbt • Apache Airflow • Snowflake • Power BI • Docker • Git
  
@@ -53,7 +53,7 @@ e Analytics.
 
 ---
 
-## 📌 KPIs-Chave
+##  KPIs-Chave
 - **Taxa de Churn (%)**
 - **Saldo Perdido (€)**
 - **Clientes Ativos vs Inativos**
